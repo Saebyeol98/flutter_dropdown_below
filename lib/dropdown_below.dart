@@ -175,17 +175,13 @@ class _DropdownMenuState<T> extends State<_DropdownMenu<T>> {
           child: Material(
             type: MaterialType.transparency,
             textStyle: route.style,
-            child: ScrollConfiguration(
-              behavior: _DropdownScrollBehavior(),
-              child: Scrollbar(
-                child: ListView(
-                  controller: widget.route!.scrollController,
-                  padding: kMaterialListPadding,
-                  itemExtent: _kMenuItemHeight,
-                  shrinkWrap: true,
-                  children: children,
-                ),
-              ),
+            child: ListView(
+              physics: const ClampingScrollPhysics(),
+              controller: widget.route!.scrollController,
+              padding: kMaterialListPadding,
+              itemExtent: _kMenuItemHeight,
+              shrinkWrap: true,
+              children: children,
             ),
           ),
         ),
